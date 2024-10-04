@@ -1,5 +1,6 @@
 package org.acme;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -17,7 +18,7 @@ import jakarta.ws.rs.core.MediaType;
 public class RegistrationResource {
 
     @POST
-    public void register(User user) {
+    public void register(@Valid User user) {
         System.out.println("registering user %s with email %s and age %d"
                 .formatted(user.email(), user.data().name(), user.data().age()));
     }

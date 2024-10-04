@@ -25,7 +25,7 @@ public class RegistrationController {
     void register(@RequestBody @Valid User user) {
 
         System.out.println("registering user %s with email %s"
-                .formatted(user.email(), user.data().getName()));
+                .formatted(user.email(), user.data().name()));
     }
 
     record User(@Email
@@ -33,11 +33,7 @@ public class RegistrationController {
                 @NotNull @DeveSerMaiorDeIdadeENomeComecaComA
                 UserData data) { }
 
-    record UserData(String name, @Positive Integer age) {
-
-        Optional<String> getName(){
-            return ofNullable(this.name);
-        }
+    record UserData(@NotBlank String name, @Positive Integer age) {
 
     }
 }
